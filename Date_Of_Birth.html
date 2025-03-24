@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date of Birth Validation</title>
+</head>
+<body>
+    <h4>Date of Birth</h4>
+    <form id="dobForm">
+        <label for="day">dd</label>
+        <input type="text" id="day" maxlength="2"> /
+        <label for="month">mm</label>
+        <input type="text" id="month" maxlength="2"> /
+        <label for="year">yyyy</label>
+        <input type="text" id="year" maxlength="4">
+        <br><br>
+        <button type="button" onclick="validateDOB()">Submit</button>
+    </form>
+
+    <p id="error" style="color:red;"></p>
+
+    <script>
+        function validateDOB() {
+            const day = document.getElementById('day').value.trim();
+            const month = document.getElementById('month').value.trim();
+            const year = document.getElementById('year').value.trim();
+            const errorElement = document.getElementById('error');
+            
+            
+            errorElement.textContent = "";
+            
+            
+            if (!day || !month || !year) {
+                errorElement.textContent = "All fields are required.";
+                return;
+            }
+            
+            
+            if (isNaN(day) || isNaN(month) || isNaN(year)) {
+                errorElement.textContent = "All values must be valid numbers.";
+                return;
+            }
+
+            
+            const dayInt = parseInt(day, 10);
+            const monthInt = parseInt(month, 10);
+            const yearInt = parseInt(year, 10);
+
+           
+            if (dayInt < 1 || dayInt > 31) {
+                errorElement.textContent = "Day must be between 1 and 31.";
+                return;
+            }
+            if (monthInt < 1 || monthInt > 12) {
+                errorElement.textContent = "Month must be between 1 and 12.";
+                return;
+            }
+            if (yearInt < 1900 || yearInt > 2025) {
+                errorElement.textContent = "Year must be between 1900 and 2025.";
+                return;
+            }
+
+            
+            alert("Date of Birth is valid!");
+        }
+    </script>
+</body>
+</html>
