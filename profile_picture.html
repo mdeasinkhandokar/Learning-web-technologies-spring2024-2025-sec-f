@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Picture Upload</title>
+    <script>
+        function validateForm() {
+            var userId = document.getElementById("userId").value;
+            var picture = document.getElementById("picture").value;
+            var errorMessage = "";
+
+            // Validate UserId
+            if (userId.trim() === "" || isNaN(userId) || Number(userId) <= 0) {
+                errorMessage += "UserId cannot be empty and must be a positive number.\n";
+            }
+
+            // Validate Picture
+            if (picture.trim() === "") {
+                errorMessage += "Picture cannot be empty.\n";
+            }
+
+            if (errorMessage !== "") {
+                alert(errorMessage);
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Profile Picture</h2>
+    <form onsubmit="return validateForm()">
+        <label for="userId">User Id:</label>
+        <input type="text" id="userId" name="userId"><br><br>
+
+        <label for="picture">Picture:</label>
+        <input type="file" id="picture" name="picture"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
