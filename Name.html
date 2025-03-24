@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value.trim();
+            var namePattern = /^[A-Za-z][A-Za-z.\-]*\s[A-Za-z.\-]+$/; 
+
+            if (name === "") {
+                alert("Name cannot be empty.");
+                return false;
+            }
+            if (!namePattern.test(name)) {
+                alert("Name must contain at least two words, start with a letter, and can include letters, dots (.), or dashes (-).");
+                return false;
+            }
+
+            alert("Form submitted successfully!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Name Validation</h2>
+    <form onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
